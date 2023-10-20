@@ -1,23 +1,20 @@
-import { NavLink, Outlet } from 'react-router-dom';
-// import css from './Layout.module.css';
+import css from './Layout.module.css';
 import { Suspense } from 'react';
+import Footer from 'components/Footer/Footer';
+import Header from 'components/Header/Header';
+import { Outlet } from 'react-router-dom';
 
 const Layout = () => {
   return (
-    <>
-      <header>
-        <nav>
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/content">Content</NavLink>
-        </nav>
-      </header>
-      <main>
+    <div className={css.container}>
+      <Header />
+      <main className={css.content}>
         <Suspense fallback={<div>Loading...</div>}>
           <Outlet />
         </Suspense>
       </main>
-      <footer></footer>
-    </>
+      <Footer />
+    </div>
   );
 };
 
